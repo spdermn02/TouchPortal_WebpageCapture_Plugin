@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pkg-win": "pkg --targets node14-win-x64 .",
     "pkg-mac": "pkg --targets node14-macos-x64 .",
-    "build-win": "pkg --targets node14-win-x64 . && move touchportal_webpage_capture.exe base/Windows/TPWebpageCapture/ && del Installers\\TPWebpageCapture-Win.tpp && cd base\\Windows && 7z a -tzip ../../Installers/TPWebpageCapture-Win.tpp TPWebpageCapture && del TPStreamChat\\touchportal_streamchat.exe",
-    "build-mac": "pkg --targets node14-macos-x64 . && move touchportal_webpage_capture base/Mac/TPWebpageCapture/ && del Installers\\TPWebpageCapture-Mac.tpp && cd base\\Mac && 7z a -tzip ../../Installers/TPWebpageCapture-Mac.tpp TPWebpageCapture && del TPStreamChat\\touchportal_streamchat"
+    "build-win": "pkg --targets node14-win-x64 . && move touchportal_webpage_capture.exe base/Windows/TPWebpageCapture/ && Xcopy /E /I node_modules\\puppeteer\\.local-chromium\\win64-884014\\chrome-win base\\Windows\\TPWebpageCapture\\puppeteer && del Installers\\TPWebpageCapture-Win.tpp && cd base\\Windows && 7z a -tzip ../../Installers/TPWebpageCapture-Win.tpp TPWebpageCapture && del TPWebpageCapture\\touchportal_webpage_capture.exe && rmdir /Q /s TPWebpageCapture\\puppeteer",
+    "build-mac": "pkg --targets node14-macos-x64 . && move touchportal_webpage_capture base/Mac/TPWebpageCapture/ && del Installers\\TPWebpageCapture-Mac.tpp && cd base\\Mac && 7z a -tzip ../../Installers/TPWebpageCapture-Mac.tpp TPWebpageCapture && del TPWebpageCapture\\touchportal_webpage_capture && rmdir /Q /s TPWebpageCapture\\puppeteer"
   },
   "pkg": {
     "scripts": [
