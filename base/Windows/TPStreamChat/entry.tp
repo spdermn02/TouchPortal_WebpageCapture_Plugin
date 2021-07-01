@@ -1,0 +1,108 @@
+{
+    "sdk": 3,
+    "version": 1000,
+    "TPDiscord_Version": "1.0.0",
+    "name": "Touch Portal Stream Chat",
+    "id": "TouchPortal_StreamChat",
+    "plugin_start_cmd": "\"%TP_PLUGIN_FOLDER%TPStreamChat\\touchportal_streamchat.exe\"",
+    "configuration": {
+        "colorDark": "#23272A",
+        "colorLight": "#7289DA"
+    },
+    "settings": [
+        {
+            "name": "Twitch Chat Enabled",
+            "type": "text",
+            "default": "No",
+            "maxLength":3 
+        },
+        {
+            "name": "Twitch Chat User Name",
+            "type": "text",
+            "default": ""
+        },
+        {
+            "name": "Twitch Chat Snapshot Time",
+            "type": "number",
+            "default": "2",
+            "minValue": 1
+        },
+        {
+            "name": "Twitch Chat Height",
+            "type": "number",
+            "default": "600",
+            "minValue":300, 
+            "maxValue":1200 
+        },
+        {
+            "name": "Twitch Chat Width",
+            "type": "number",
+            "default": "300",
+            "minValue":300, 
+            "maxValue":1920 
+        },
+        {
+            "name": "Twitch Chat Text Size",
+            "type": "number",
+            "default": "1",
+            "minValue":0, 
+            "maxValue":3 
+
+        },
+        {
+            "name": "Twitch Chat Show Timestamp",
+            "type": "text",
+            "default": "No",
+            "maxLength":3 
+        },
+        {
+            "name": "Twitch Chat Show Darkmode",
+            "type": "text",
+            "default": "Yes",
+            "maxLength":3 
+        },
+        {
+            "name": "Trovo Chat Enabled",
+            "type": "text",
+            "default": "No",
+            "maxLength":3 
+        },
+        {
+            "name": "Trovo Chat User Name",
+            "type": "text",
+            "default": ""
+        },
+        {
+            "name": "Trovo Chat Snapshot Time",
+            "type": "number",
+            "default": "2",
+            "minValue": 1
+        },
+        {
+            "name": "Trovo Chat Height",
+            "type": "number",
+            "default": "600",
+            "minValue":300, 
+            "maxValue":1200 
+        },
+        {
+            "name": "Trovo Chat Width",
+            "type": "number",
+            "default": "300",
+            "minValue":300, 
+            "maxValue":1920 
+        }
+    ],
+    "categories": [
+        {
+            "id": "TP Stream Chat",
+            "name": "Stream Chat",
+            "imagepath": "%TP_PLUGIN_FOLDER%TPStreamChat/tp-stream-chat.png",
+            "actions": [
+            ],
+            "states": [
+            ],
+            "events": []
+        }
+    ]
+}
