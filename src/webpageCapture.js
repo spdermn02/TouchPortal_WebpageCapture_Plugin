@@ -10,15 +10,15 @@ class WebpageCapture {
         this.height = ( parseInt(options['height'],10) > 0 ) ? parseInt(options['height'],10) : 600;
         this.deviceScaleFactor = ( parseInt(options['deviceScaleFactor'],10) > 0 ) ? parseInt(options['deviceScale'],10) : 2;
         this.snapshotSelector = options['snapshotSelector'] ?? undefined;
+        this.executablePath = options['executablePath'];
         this.setState = setState;
         this.logIt('DEBUG',JSON.stringify(options));
         this.initialize()
     }
     async initialize() {
         let parent = this;
-        //parent.browser = await puppeteer.launch({ executablePath: './puppeteer/chrome.exe'});
         parent.browser = await puppeteer.launch({headless: true,
-            executablePath: 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe' // Windows
+            executablePath: this.executablePath 
         });
         parent.page = await this.browser.newPage();
         await parent.page.goto(parent.url,{ waitUntil: 'networkidle2' });

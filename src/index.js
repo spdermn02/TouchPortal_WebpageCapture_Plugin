@@ -5,7 +5,8 @@ const path = require('path');
 
 const pluginId = 'TouchPortal_Webpage_Capture';
 const updateUrl = "https://raw.githubusercontent.com/spdermn02/TouchPortal_WebpageCapture_Plugin/main/package.json";
-
+const DEFAULT_CONFIG = './config/';
+const DEFAULT_BROWSER_EXECUTABLE_PATH = './puppeteer/chrome.exe';
 
 const settings = { };
 let states = {};
@@ -35,7 +36,7 @@ const setState = (state, value ) => {
 }
 
 const loadWebpagesToCapture = () => {
-    const configPath = "./config/";
+    const configPath = settings['Config Directory'] ?? DEFAULT_CONFIG;
     const files = fs.readdirSync(configPath);
     const webpages = files.filter(f => f.split(".").pop() === 'cnf' );
     if( webpages.length <= 0 ) {
@@ -54,11 +55,14 @@ const loadWebpagesToCapture = () => {
                 }
                 return obj;
             },{})
-            TPClient.createState(state,'Capture '+options.name,'');
+            if( !states[state] ) {
+                TPClient.createState(state,'Capture '+options.name,'');
+            }
             states[state] = { value : ''}
             options.state = state;
             options.interval = parseInt(options.interval,10)*1000; //convert to ms
             options.interval = (options.interval <= 0 ) ? 2000 : options.interval;
+            options.executablePath = settings['Browser Executable Path'] ?? DEFAULT_BROWSER_EXECUTABLE_PATH;
             const capture = new WebpageCapture(options,setState);
             sleep(2000);
             capture.startCapture();
@@ -80,17 +84,17 @@ TPClient.on("Settings", async (data) => {
       settings[key] = setting[key];
     });
   }
+  loadWebpagesToCapture();
 });
   
 TPClient.on("Info", (data) => {
   //TP Is connected now
   logIt('DEBUG','We are connected, received Info message');
-  loadWebpagesToCapture();
 });
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+}
 
 function logIt() {
     var curTime = new Date().toISOString();

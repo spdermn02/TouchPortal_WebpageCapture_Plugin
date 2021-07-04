@@ -10,6 +10,16 @@
         "colorLight": "#7289DA"
     },
     "settings": [
+        {
+            "name": "Browser Executable Path",
+            "type": "text",
+            "default": "./puppeteer/chrome.exe"
+        },
+        {
+            "name": "Config Directory",
+            "type": "text",
+            "default": "./config/"
+        }
     ],
     "categories": [
         {
