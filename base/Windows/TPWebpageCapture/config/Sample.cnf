@@ -1,0 +1,7 @@
+name=Sample Webpage
+interval=3
+url=https://duckduckgo.com/
+width=350
+height=700
+snapshotSelector=
+deviceScaleFactor=2
