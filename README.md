@@ -29,7 +29,7 @@ Capture any number of webpages at a set interval, width, and height. Even specif
         -Default: ./puppeteer/chrome.exe
         -Alt: C:/Program Files (x86)/Google/Chrome/Application/chrome.exe
     - Config Directory
-      Provides for a config directory to be outside of the default %APPDATA%\TouchPortal\plugins\TPWebpageCapture directory, so that future re-imports of the plugin will not remove your configuration.
+      Provides for a config directory to be outside of the default %APPDATA%\TouchPortal\plugins\TPWebpageCapture\config directory, so that future re-imports of the plugin will not remove your configuration.
   - Actions
     There are no defined actions for this plugin, juse utilizes the built in Touch Portal plugin actions
   - Events
@@ -37,6 +37,8 @@ Capture any number of webpages at a set interval, width, and height. Even specif
   - States
     States are automatically created based on the configuration you setup for what you want to capture. These are created at startup of the plugin.
 ```
+
+
 
 # Installation
 1. Download the .tpp file the installer for your OS [Windows](https://github.com/spdermn02/TouchPortal_WebpageCapture_Plugin/tree/master/Installers/TPWebpageCapture-Win.tpp) OR MacOS (TBD)
@@ -105,6 +107,15 @@ deviceScaleFactor=2
 ## Examples
 [Twitch Chat](examples/TwitchChat.cnf) <br/>
 [Trovo Chat](examples/TrovoChat.cnf)
+
+![Capture](resources/images/Capture-Example.png)
+
+Touch Portal Usage:
+
+Trovo:
+![Trovo Chat](resources/images/TrovoCapture-Example.png)
+Twitch:
+![Twitch Chat](resources/images/TwitchCapture-Example.png)
 
 # Dependencies
  - [puppeteer](https://www.npmjs.com/package/puppeteer)
