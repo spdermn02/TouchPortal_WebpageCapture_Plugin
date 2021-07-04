@@ -53,8 +53,8 @@ Capture any number of webpages at a set interval, width, and height. Even specif
 There are only two settings currently that are configurable inside the Touch Portal Plugin Settings UI
 
 **<h2>Browser Executable Path  </h2>** 
-<div style="width: 75px; background-color:green; text-align: center; border-radius: 10px; font-weight: bold">Setting</div>
-Description: Allows for changing which browser executable is used by puppeteer to capture the web pages. 
+
+*Description*: Allows for changing which browser executable is used by puppeteer to capture the web pages. 
 
 Default: 
 
@@ -68,9 +68,7 @@ If you are interested in maybe capturing you tube video, or twitch stream into T
 
 **<h2>Config Directory</h2>**
 
-<div style="width: 75px; background-color:green; text-align: center; border-radius: 10px; font-weight: bold">Setting</div>
-
-Description: Change the location of where your capture configuration files are defined. This will allow for updates to the plugin, but will not cause your configuration to get lost.  I recommend you change this to somewhere more permenant.
+*Description*: Change the location of where your capture configuration files are defined. This will allow for updates to the plugin, but will not cause your configuration to get lost.  I recommend you change this to somewhere more permenant.
 
 Default: 
 
