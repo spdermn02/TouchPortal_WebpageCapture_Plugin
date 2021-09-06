@@ -106,16 +106,21 @@ deviceScaleFactor=2
 
 ## Examples
 [Twitch Chat](examples/TwitchChat.cnf) <br/>
-[Trovo Chat](examples/TrovoChat.cnf)
+[Trovo Chat](examples/TrovoChat.cnf) <br/>
+[Glimesh Chat](examples/GlimeshChat.cnf)
 
 ![Capture](resources/images/Capture-Example.png)
 
 Touch Portal Usage:
 
-Trovo:
+Trovo: <br/>
 ![Trovo Chat](resources/images/TrovoCapture-Example.png)
-Twitch:
+
+Twitch:<br/>
 ![Twitch Chat](resources/images/TwitchCapture-Example.png)
+
+Glimesh:<br/>
+![GlimeshChat](resources/images/GlimeshCapture-Example.png)
 
 # Dependencies
  - [puppeteer](https://www.npmjs.com/package/puppeteer)

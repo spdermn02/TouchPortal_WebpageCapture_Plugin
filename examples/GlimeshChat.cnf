@@ -1,0 +1,7 @@
+name=Glimesh Chat
+interval=3
+url=https://glimesh.tv/<USERNAME>/chat
+width=400
+height=550
+snapshotSelector=#chat-messages
+deviceScaleFactor=2
