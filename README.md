@@ -144,3 +144,4 @@ Use the Github Issues tab to report any bugs/enhancements for this plug-in. Or m
 # Acknowledgements
 1. Thank you to Reinier and Ty the Touch Portal Creators
 2. Thank you to Puppeteer for creating the wonderful module to capture browser content
+3. Thanks to @VorynICT from twitter showing off Glimesh being captured: https://glimesh.tv/voryn
