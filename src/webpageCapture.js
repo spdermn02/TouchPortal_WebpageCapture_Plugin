@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-
+const chrome = require('chrome-cookies-secure');
 class WebpageCapture {
     constructor(options = {}, setState) {
         this.url = options['url'];
@@ -11,16 +11,33 @@ class WebpageCapture {
         this.deviceScaleFactor = ( parseInt(options['deviceScaleFactor'],10) > 0 ) ? parseInt(options['deviceScale'],10) : 2;
         this.snapshotSelector = options['snapshotSelector'] ?? undefined;
         this.executablePath = options['executablePath'];
+        this.profile = options['chromeProfile'];
         this.setState = setState;
         this.logIt('DEBUG',JSON.stringify(options));
         this.initialize()
     }
     async initialize() {
         let parent = this;
+        chrome.getCookies(parent.url, 'puppeteer', function(err, cookies) {
+            if (err) {
+                parent.logIt('ERROR',err);
+                return
+            }
+            parent.logIt('DEBUG',JSON.stringify(cookies));
+            parent.loadBrowser(cookies);
+        }, 'Default')
+    }
+    async loadBrowser(cookies) {
+        let parent = this;
         parent.browser = await puppeteer.launch({headless: true,
-            executablePath: this.executablePath 
+            executablePath: this.executablePath
         });
         parent.page = await this.browser.newPage();
+        for (let cookie of cookies) {
+            await parent.page.setCookie(cookie);
+        }
+        
+        await parent.page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
         await parent.page.goto(parent.url,{ waitUntil: 'networkidle2' });
         await parent.page.setViewport({width: parent.width, height: parent.height, deviceScaleFactor: 2});
     }

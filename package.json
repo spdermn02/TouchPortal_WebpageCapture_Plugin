@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/spdermn02/TouchPortal_WebpageCapture_Plugin#readme",
   "dependencies": {
+    "chrome-cookies-secure": "^1.3.2",
     "puppeteer": "^10.0.0",
     "touchportal-api": "^2.0.1"
   }

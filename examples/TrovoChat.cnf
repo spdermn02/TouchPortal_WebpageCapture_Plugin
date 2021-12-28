@@ -2,6 +2,6 @@ name=Trovo Chat
 interval=3
 url=https://trovo.live/chat/<USERNAME>
 width=350
-height=700
+height=900
 snapshotSelector=ul.chat-list
 deviceScaleFactor=2
