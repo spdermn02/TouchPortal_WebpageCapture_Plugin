@@ -43,7 +43,7 @@ const loadWebpagesToCapture = () => {
         logIt("WARNING", "No webpages found to capture");
     }
     else {
-        webpages.forEach((webpage) => {
+        webpages.forEach(async (webpage) => {
             const data = fs.readFileSync(configPath+webpage).toString();
             const state = pluginId+'_'+webpage.split(".").shift().replace(/(\n|\r)+$/,'');
             console.log(data);
@@ -64,7 +64,7 @@ const loadWebpagesToCapture = () => {
             options.interval = (options.interval <= 0 ) ? 2000 : options.interval;
             options.executablePath = settings['Browser Executable Path'] ?? DEFAULT_BROWSER_EXECUTABLE_PATH;
             const capture = new WebpageCapture(options,setState);
-            sleep(2000);
+            await capture.initialize();
             capture.startCapture();
         });
     }

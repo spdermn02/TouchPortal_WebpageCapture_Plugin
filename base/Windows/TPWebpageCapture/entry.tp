@@ -1,7 +1,7 @@
 {
-    "sdk": 3,
-    "version": 1000,
-    "TPDiscord_Version": "1.0.0",
+    "sdk": 4,
+    "version": 1100,
+    "TPDiscord_Version": "1.1.0",
     "name": "Touch Portal Webpage Capture",
     "id": "TouchPortal_Webpage_Capture",
     "plugin_start_cmd": "\"%TP_PLUGIN_FOLDER%TPWebpageCapture\\touchportal_webpage_capture.exe\"",

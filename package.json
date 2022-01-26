@@ -35,5 +35,8 @@
   "dependencies": {
     "puppeteer": "^10.0.0",
     "touchportal-api": "^2.0.1"
+  },
+  "devDependencies": {
+    "pkg": "^5.5.2"
   }
 }

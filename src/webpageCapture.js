@@ -8,12 +8,10 @@ class WebpageCapture {
         this.captureInterval = options['interval'] ?? 2000; //need a default of 2 seconds here incase got messed up
         this.width = ( parseInt(options['width'],10) > 0 ) ? parseInt(options['width'],10) : 300;
         this.height = ( parseInt(options['height'],10) > 0 ) ? parseInt(options['height'],10) : 600;
-        this.deviceScaleFactor = ( parseInt(options['deviceScaleFactor'],10) > 0 ) ? parseInt(options['deviceScale'],10) : 2;
+        this.deviceScaleFactor = ( parseInt(options['deviceScaleFactor'],10) > 0 ) ? parseInt(options['deviceScaleFactor'],10) : 2;
         this.snapshotSelector = options['snapshotSelector'] ?? undefined;
         this.executablePath = options['executablePath'];
         this.setState = setState;
-        this.logIt('DEBUG',JSON.stringify(options));
-        this.initialize()
     }
     async initialize() {
         let parent = this;
@@ -21,8 +19,8 @@ class WebpageCapture {
             executablePath: this.executablePath 
         });
         parent.page = await this.browser.newPage();
-        await parent.page.goto(parent.url,{ waitUntil: 'networkidle2' });
-        await parent.page.setViewport({width: parent.width, height: parent.height, deviceScaleFactor: 2});
+        await parent.page.setViewport({width: parent.width, height: parent.height, deviceScaleFactor: parent.deviceScaleFactor});
+        await parent.page.goto(parent.url,{ waitUntil: 'load' });
     }
     pauseCapture(){
         clearInterval(this.capture);
@@ -35,7 +33,7 @@ class WebpageCapture {
         },parent.captureInterval);
     }
     async changeViewport(){
-        await this.page.setViewport({width: this.width, height: this.height, deviceScaleFactor: 2});
+        await this.page.setViewport({width: this.width, height: this.height, deviceScaleFactor: this.deviceScaleFactor});
     }
     stopCapture(){
         clearInterval(this.capture);
