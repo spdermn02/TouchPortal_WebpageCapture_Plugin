@@ -34,7 +34,7 @@
   "homepage": "https://github.com/spdermn02/TouchPortal_WebpageCapture_Plugin#readme",
   "dependencies": {
     "puppeteer": "^10.0.0",
-    "touchportal-api": "^2.0.1"
+    "touchportal-api": "^3.0.0"
   },
   "devDependencies": {
     "pkg": "^5.5.2"
