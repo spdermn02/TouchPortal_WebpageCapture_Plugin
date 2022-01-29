@@ -5,3 +5,4 @@ width=350
 height=700
 snapshotSelector=ul.chat-list
 deviceScaleFactor=2
+cleanElements=.header-right,.chat-header-wrap,.celebrations-container,.input-panels-container
