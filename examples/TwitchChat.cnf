@@ -5,3 +5,4 @@ width=350
 height=900
 snapshotSelector=[data-a-target="chat-scroller"]
 deviceScaleFactor=2
+cleanElements=.stream-chat-header,.channel-leaderboard,.chat-room-notification,.chat-room__viewer-card,.chat-input,.simplebar-scrollbar
