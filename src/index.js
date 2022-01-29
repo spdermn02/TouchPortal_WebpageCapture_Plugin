@@ -46,10 +46,8 @@ const loadWebpagesToCapture = () => {
         webpages.forEach(async (webpage) => {
             const data = fs.readFileSync(configPath+webpage).toString();
             const state = pluginId+'_'+webpage.split(".").shift().replace(/(\n|\r)+$/,'');
-            console.log(data);
             const options = data.split(/\r?\n/).reduce((obj,line,index) => {
                 const strParts = line.match(/([^=]*)=(.*)/);
-                console.log(strParts);
                 if( strParts[1] && strParts[2]){
                     obj[strParts[1].replace(/\s+/g,'')] = strParts[2].replace(/(\n|\r)+$/,'');
                 }
@@ -65,10 +63,13 @@ const loadWebpagesToCapture = () => {
             options.executablePath = settings['Browser Executable Path'] ?? DEFAULT_BROWSER_EXECUTABLE_PATH;
             const capture = new WebpageCapture(options,setState);
             await capture.initialize();
-            capture.startCapture();
         });
     }
 }
+
+TPClient.on("Action", (data) => {
+    logIt('DEBUG','Action Message received');
+});
 
 TPClient.on("Broadcast", () => {
     logIt('DEBUG','Received Broadcast Message, sending all states again');

@@ -4,4 +4,5 @@ url=https://duckduckgo.com/
 width=350
 height=700
 snapshotSelector=
-deviceScaleFactor=2
+deviceScaleFactor=1
+cleanElements=.xyz,#id-selector

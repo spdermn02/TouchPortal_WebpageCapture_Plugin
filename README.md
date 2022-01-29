@@ -36,6 +36,11 @@ Capture any number of webpages at a set interval, width, and height. Even specif
     There are no defined events for this plugin, just utilizes the built in Touch Portal plugin state events
   - States
     States are automatically created based on the configuration you setup for what you want to capture. These are created at startup of the plugin.
+1.1.0 - Process Fixes
+  - Bug Fix
+    - Capture was starting prior to full render being complete. Now will only start capture after page render is done.
+  - Enhancements
+    - added new config option to have a Comma Separated list of `cleanElements` to remove from a page prior to capture starting, this will allow for better capture of things like twitch or trovo chat (and possibly others)
 ```
 
 

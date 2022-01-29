@@ -11,6 +11,7 @@ class WebpageCapture {
         this.deviceScaleFactor = ( parseInt(options['deviceScaleFactor'],10) > 0 ) ? parseInt(options['deviceScaleFactor'],10) : 2;
         this.snapshotSelector = options['snapshotSelector'] ?? undefined;
         this.executablePath = options['executablePath'];
+        this.cleanElements = options['cleanElements'] != '' ? options['cleanElements'].split(",") : [];
         this.setState = setState;
     }
     async initialize() {
@@ -20,7 +21,16 @@ class WebpageCapture {
         });
         parent.page = await this.browser.newPage();
         await parent.page.setViewport({width: parent.width, height: parent.height, deviceScaleFactor: parent.deviceScaleFactor});
-        await parent.page.goto(parent.url,{ waitUntil: 'load' });
+        await parent.page.goto(parent.url,{ waitUntil: 'networkidle2' });
+        parent.cleanElements.forEach(async (selText) => {
+            await this.page.evaluate((sel) => {
+                var elements = document.querySelectorAll(sel);
+                for(var i=0; i< elements.length; i++){
+                    elements[i].parentNode.removeChild(elements[i]);
+                }
+            }, selText);
+        });
+
     }
     pauseCapture(){
         clearInterval(this.capture);
