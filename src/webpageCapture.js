@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+
 
 class WebpageCapture {
     constructor(options = {}, setState) {
@@ -10,15 +10,12 @@ class WebpageCapture {
         this.height = ( parseInt(options['height'],10) > 0 ) ? parseInt(options['height'],10) : 600;
         this.deviceScaleFactor = ( parseInt(options['deviceScaleFactor'],10) > 0 ) ? parseInt(options['deviceScaleFactor'],10) : 2;
         this.snapshotSelector = options['snapshotSelector'] ?? undefined;
-        this.executablePath = options['executablePath'];
         this.cleanElements = options['cleanElements'] != '' ? options['cleanElements'].split(",") : [];
         this.setState = setState;
+        this.browser = options['browser'];
     }
     async initialize() {
         let parent = this;
-        parent.browser = await puppeteer.launch({headless: true,
-            executablePath: this.executablePath 
-        });
         parent.page = await this.browser.newPage();
         await parent.page.setViewport({width: parent.width, height: parent.height, deviceScaleFactor: parent.deviceScaleFactor});
         await parent.page.goto(parent.url,{ waitUntil: 'networkidle2' });
@@ -30,6 +27,11 @@ class WebpageCapture {
                 }
             }, selText);
         });
+        if( this.snapshotSelector != undefined ) { 
+            await this.page.waitForSelector(this.snapshotSelector);
+            let page = await this.page.$(this.snapshotSelector);
+            this.page = page;
+        }
 
     }
     pauseCapture(){
@@ -50,13 +52,7 @@ class WebpageCapture {
         this.capture = null;
     }
     async takeScreenshot(){
-        let snapshotPage = this.page;
-        if( this.snapshotSelector != undefined ) { 
-            await this.page.waitForSelector(this.snapshotSelector);
-            snapshotPage = await this.page.$(this.snapshotSelector);
-        }
-
-        let screenshot = await snapshotPage.screenshot({encoding: "base64"});
+        let screenshot = await this.page.screenshot({encoding: "base64"});
         this.setState(this.stateVal,screenshot);
     }
 
