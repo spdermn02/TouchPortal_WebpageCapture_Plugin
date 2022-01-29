@@ -100,7 +100,7 @@ url=<full url you want to capture>
 width=<width in pixels>
 height=<width in pixels>
 snapshotSelector=<CSS Selector of element to capture, this is Optional>
-deviceScaleFactor=< Scale factor of the device, just use 2 unless it causes issues>
+deviceScaleFactor=<Valid Values: 1 or 2, Scale factor of the device, deviceScaleFactor of 2 will be 2 times the width and height, will default to 2 if left empty> 
 cleanElements=<Comma Separated List of CSS selectors for elements to be removed from the page prior to capture starting>
 ```
 
@@ -112,7 +112,7 @@ url=https://www.twitch.tv/popout/spdermn02/chat?darkpopout
 width=350
 height=900
 snapshotSelector=[data-a-target="chat-scroller"]
-deviceScaleFactor=2
+deviceScaleFactor=1
 cleanElements=.stream-chat-header,.channel-leaderboard,.chat-room-notification,.chat-room__viewer-card,.chat-input,.simplebar-scrollbar
 ```
 
