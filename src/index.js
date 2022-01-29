@@ -1,6 +1,7 @@
 const TPClient = new (require("touchportal-api").Client)();
 const fs = require('fs');
 const WebpageCapture = require("./webpageCapture");
+const puppeteer = require('puppeteer');
 const path = require('path');
 
 const pluginId = 'TouchPortal_Webpage_Capture';
@@ -35,7 +36,7 @@ const setState = (state, value ) => {
     }
 }
 
-const loadWebpagesToCapture = () => {
+const loadWebpagesToCapture = async () => {
     const configPath = settings['Config Directory'] ?? DEFAULT_CONFIG;
     const files = fs.readdirSync(configPath);
     const webpages = files.filter(f => f.split(".").pop() === 'cnf' );
@@ -43,6 +44,9 @@ const loadWebpagesToCapture = () => {
         logIt("WARNING", "No webpages found to capture");
     }
     else {
+        let browser = await puppeteer.launch({headless: true,
+            executablePath: settings['Browser Executable Path'] ?? DEFAULT_BROWSER_EXECUTABLE_PATH 
+        });
         webpages.forEach(async (webpage) => {
             const data = fs.readFileSync(configPath+webpage).toString();
             const state = pluginId+'_'+webpage.split(".").shift().replace(/(\n|\r)+$/,'');
@@ -60,9 +64,10 @@ const loadWebpagesToCapture = () => {
             options.state = state;
             options.interval = parseInt(options.interval,10)*1000; //convert to ms
             options.interval = (options.interval <= 0 ) ? 2000 : options.interval;
-            options.executablePath = settings['Browser Executable Path'] ?? DEFAULT_BROWSER_EXECUTABLE_PATH;
+            options.browser = browser;
             const capture = new WebpageCapture(options,setState);
             await capture.initialize();
+            capture.startCapture();
         });
     }
 }
