@@ -2,7 +2,7 @@ name=Twitch Chat
 interval=3
 url=https://www.twitch.tv/popout/<USERNAME>/chat?darkpopout
 width=350
-height=900
-snapshotSelector=[data-a-target="chat-scroller"]
-deviceScaleFactor=2
+height=700
+snapshotSelector=
+deviceScaleFactor=1
 cleanElements=.stream-chat-header,.channel-leaderboard,.chat-room-notification,.chat-room__viewer-card,.chat-input,.simplebar-scrollbar

@@ -42,6 +42,10 @@ Capture any number of webpages at a set interval, width, and height. Even specif
   - Enhancements
     - added new config option to have a Comma Separated list of `cleanElements` to remove from a page prior to capture starting, this will allow for better capture of things like twitch or trovo chat (and possibly others)
     - Build a NoChrome version of the plugin that will not bundle a browser with it, which will REQUIRE you to use your own chrome install from the settings
+    - Single Browser instance now instead of multiples - which should help with system resources, since a Single instance is started and multiple tabs rendered instead of multiple browsers per configuration.
+    - Refactored where the snapshotSelector takes place - so it is on initialization vs every snapshot (seemed to cause odd bugs)
+  - Examples
+    - Refactored samples for Trovo and Twitch Chat to include the new clearElements and remove the need for the snapshotSelector configuration in their specific case (not removed from code, it will still work)
 ```
 
 
