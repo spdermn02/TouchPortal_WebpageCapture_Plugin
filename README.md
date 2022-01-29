@@ -41,6 +41,7 @@ Capture any number of webpages at a set interval, width, and height. Even specif
     - Capture was starting prior to full render being complete. Now will only start capture after page render is done.
   - Enhancements
     - added new config option to have a Comma Separated list of `cleanElements` to remove from a page prior to capture starting, this will allow for better capture of things like twitch or trovo chat (and possibly others)
+    - Build a NoChrome version of the plugin that will not bundle a browser with it, which will REQUIRE you to use your own chrome install from the settings
 ```
 
 
@@ -96,6 +97,7 @@ width=<width in pixels>
 height=<width in pixels>
 snapshotSelector=<CSS Selector of element to capture, this is Optional>
 deviceScaleFactor=< Scale factor of the device, just use 2 unless it causes issues>
+cleanElements=<Comma Separated List of CSS selectors for elements to be removed from the page prior to capture starting>
 ```
 
 Example that is fully populated
@@ -107,6 +109,7 @@ width=350
 height=900
 snapshotSelector=[data-a-target="chat-scroller"]
 deviceScaleFactor=2
+cleanElements=.stream-chat-header,.channel-leaderboard,.chat-room-notification,.chat-room__viewer-card,.chat-input,.simplebar-scrollbar
 ```
 
 ## Examples
@@ -133,7 +136,7 @@ Glimesh:<br/>
 
 # Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/spdermn02/tpohm_plugin/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/spdermn02/TouchPortal_WebpageCapture_Plugin/tags).
 
 # Authors
 
