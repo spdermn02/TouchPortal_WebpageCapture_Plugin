@@ -67,7 +67,7 @@ There are only two settings currently that are configurable inside the Touch Por
 Default: 
 
     `./puppeteer/chrome.exe`
-    This is packaged with the plugin itself, and the setting is defaulted to use it
+    This is packaged with the plugin itself (unless you chose the NoChrome installer), and the setting is defaulted to use it
 
 If you are interested in maybe capturing you tube video, or twitch stream into Touch Portal, you will need to change to using a more "robust" browser. This plugin has been tested with Chrome that I have installed. the path below may be different for you if you don't use the C:/ drive construct
 
