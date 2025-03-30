@@ -41,7 +41,7 @@ Capture any number of webpages at a set interval, width, and height. Even specif
 
 
 # Installation
-1. Download the .tpp file the installer for your OS [Windows](https://github.com/spdermn02/TouchPortal_WebpageCapture_Plugin/tree/master/Installers/TPWebpageCapture-Win.tpp) OR MacOS (TBD)
+1. Download the .tpp file the installer for your OS [Windows](https://github.com/spdermn02/TouchPortal_WebpageCapture_Plugin/releases) OR MacOS (TBD)
 1. Go to Touch Portal Settings (the gear icon)
 2. Go To Plug-ins
 3. Click the Import Plug-in button
